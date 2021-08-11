@@ -7,17 +7,19 @@ using System.Web;
 
 namespace GeneralStoreAPI.Models
 {
-    public class Transactions
+    public class Transaction
     {
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey]
+        [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
-
-        [ForeignKey]
+        public Customer Customer { get; set; }
+        
+        [ForeignKey(nameof (Product))]
         public string ProductSKU { get; set; }
-
+        public Product Product { get; set; }
+        
         public int ItemCount { get; set; }
         public DateTime DateOfTransaction { get; set; }
 
